@@ -345,8 +345,7 @@ body.dark-mode .profile p {
   color: #fff !important;
 }
 
-/* Dark Mode Fix for Profile, Intro, and Navbar */
-body.dark-mode #profile,
+/* Dark Mode Fix for Intro, and Navbar */
 body.dark-mode .intro,
 body.dark-mode nav.navbar {
   background-color: #1e1e1e !important; /* pure black background */
