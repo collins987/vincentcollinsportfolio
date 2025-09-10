@@ -128,19 +128,13 @@ body {
   transform: translateY(-5px);
 }
 
-.social-icon {
-  display: inline-block;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-icon i {
-  color: #5bc0de;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-icon:hover i {
-  color: #000; /* subtle hover effect */
-  transform: scale(1.1);
+.social-icons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* spacing between icons */
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .icon-img {
@@ -151,14 +145,14 @@ body {
 }
 
 .social-icon:hover .icon-img {
-  transform: scale(1.1);
+  transform: scale(1.15);
   filter: brightness(0.8);
 }
 
 /* Resume Button Black Border */
 .btn-resume {
   border: 2px solid #000;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
   
@@ -269,6 +263,27 @@ body {
       grid-template-columns: 1fr;
     }
   }
+
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+  .social-icons-wrapper {
+    gap: 25px; /* tighter spacing on tablets */
+  }
+  .icon-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons-wrapper {
+    gap: 20px;
+  }
+  .icon-img {
+    width: 45px;
+    height: 45px;
+  }
+}
   /* Custom Light Blue Button */
 .btn-primary {
     background-color: #5bc0de;   /* light blue */
