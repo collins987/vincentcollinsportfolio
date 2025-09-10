@@ -18,15 +18,12 @@ body {
     color: inherit;
   }
   
-  /* -------------------
-     Profile Section
-  ------------------- */
+  /*  Profile Section */
   #profile {
     animation: fadeIn 1s ease-in-out;
   }
   
   #profile-pic {
-    border: 3px solid #5bc0de; /* light blue accent */
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -59,7 +56,6 @@ body {
   ------------------- */
   #about-skills .card {
     border-radius: 12px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
     border: 1px solid #5bc0de; /* light blue accent */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
