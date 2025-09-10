@@ -59,7 +59,6 @@ body {
   #about-skills .card {
     border-radius: 12px;
     box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    border: 1px solid #5bc0de; /* light blue accent */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
@@ -75,7 +74,6 @@ body {
   #education .card {
     border-radius: 12px;
     box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    border: 1px solid #5bc0de; /* light blue accent */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
