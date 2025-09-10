@@ -130,6 +130,7 @@ body {
   #contact .btn-resume {
 	margin-top: 30px;
 	margin-bottom: 30px;
+    border: #000;
   }
   .social-card {
 	display: inline-block;
@@ -138,7 +139,6 @@ body {
 	transition: transform 0.3s ease, color 0.3s ease;
   }
   .social-card i {
-	color: #5bc0de;
 	background: #e6f7fb;
 	padding: 20px;
 	border-radius: 50%;
