@@ -24,6 +24,7 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
 
 faders.forEach(fader => appearOnScroll.observe(fader));
 
+
 // =====================
 // Smooth Scroll for Internal Links
 // =====================
@@ -39,6 +40,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
 
 // =====================
 // Scroll-to-Top Button
@@ -76,6 +78,7 @@ scrollBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
 
 // =====================
 // Typing Effect in Intro Section
