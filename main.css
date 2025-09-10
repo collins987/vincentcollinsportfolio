@@ -309,7 +309,7 @@ body.dark-mode .project-card {
   color: #f1f1f1;
 }
 body.dark-mode footer {
-  background: #000;
+  background: #1e1e1e;
 }
 
 /* Active Navbar Link */
@@ -349,7 +349,7 @@ body.dark-mode .profile p {
 body.dark-mode #profile,
 body.dark-mode .intro,
 body.dark-mode nav.navbar {
-  background-color: #000 !important; /* pure black background */
+  background-color: #1e1e1e !important; /* pure black background */
   color: #fff !important;           /* white text for contrast */
 }
 
@@ -365,5 +365,5 @@ body:not(.dark-mode) a,
 body:not(.dark-mode) .btn,
 body:not(.dark-mode) .intro p,
 body:not(.dark-mode) .profile p {
-  color: #000 !important;
+  color: #1e1e1e !important;
 }
