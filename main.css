@@ -328,14 +328,18 @@ body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode a,
 body.dark-mode .btn,
-body.dark-mode #profile h2,
-body.dark-mode #profile h5,
-body.dark-mode #profile p,
 body.dark-mode .intro h1,
 body.dark-mode nav.navbar a,
 body.dark-mode .intro p {
   color: #fff !important;   /* ensure visibility */
 }
+
+body.dark-mode #profile h2,
+body.dark-mode #profile h5,
+body.dark-mode #profile p {
+  color: #000 !important;   /* ensure visibility */
+}
+
 
 body.dark-mode #profile h5.text-muted {
   color: #fff !important;  
