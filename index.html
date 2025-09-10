@@ -12,6 +12,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="main.css">
+
 </head>
 <body>
   <!-- Profile Section -->
@@ -235,34 +236,7 @@
     <p>&copy; 2025 Vincent Collins. All rights reserved.</p>
   </footer>
 
-
-
-  <!-- Fade-in JS with Stagger -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        if (entry.target.classList.contains('stagger')) {
-          const siblings = Array.from(entry.target.parentElement.children);
-          siblings.forEach((el, index) => {
-            if (el.classList.contains('stagger')) {
-              el.style.transitionDelay = `${index * 150}ms`;
-              el.classList.add('visible');
-              observer.unobserve(el);
-            }
-          });
-        } else {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => appearOnScroll.observe(fader));
-  </script>
+  <!-- External JavaScript -->
+  <script src="main.js"></script>
 </body>
 </html>
