@@ -194,14 +194,14 @@ lazyImages.forEach(img => {
 
 
 // =====================
-// Interactive Background (subtle gradient animation)
+// Interactive Background 
 // =====================
 const body = document.body;
-let hue = 200;
+let hue = 200; // starting at blue
 
 function animateBackground() {
-  hue = (hue + 0.2) % 360;
-  body.style.background = `linear-gradient(135deg, hsl(${hue}, 70%, 95%), hsl(${(hue + 60) % 360}, 70%, 95%))`;
+  hue = (hue + 0.2) % 60 + 200; // limit hue to 200–260 (blue-teal range)
+  body.style.background = `linear-gradient(135deg, hsl(${hue}, 70%, 95%), hsl(${(hue + 30) % 360}, 60%, 90%))`;
   requestAnimationFrame(animateBackground);
 }
 
