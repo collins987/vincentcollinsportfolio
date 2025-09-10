@@ -47,6 +47,7 @@ body {
   .intro h1 {
     font-size: 3rem;
     color: #222;
+    white-space: pre;   /* preserves spaces and line breaks */
   }
   
   .intro p.lead {
