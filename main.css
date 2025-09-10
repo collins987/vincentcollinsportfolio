@@ -296,4 +296,24 @@ body {
     border-color: #269abc;
   }
   
-  
+  /* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+body.dark-mode .card,
+body.dark-mode .contact-card,
+body.dark-mode .project-card {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+body.dark-mode footer {
+  background: #000;
+}
+
+/* Active Navbar Link */
+nav a.active-link {
+  color: #5bc0de;
+  font-weight: bold;
+  border-bottom: 2px solid #5bc0de;
+}
