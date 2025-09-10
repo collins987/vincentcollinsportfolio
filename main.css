@@ -1,11 +1,9 @@
-/* -------------------
-   General Styles
-------------------- */
+/* General Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #FFFFFF; /* white background */
-    color: #212121; /* dark grey text */
+    background-color: #f8f9fa;
+    color: #333;
     margin: 0;
     padding: 0;
   }
@@ -13,12 +11,11 @@ body {
   h1, h2, h3, h4, h5 {
     font-weight: bold;
     line-height: 1.2;
-    color: #212121;
   }
   
   a {
     text-decoration: none;
-    color: #0D6EFD; /* accent blue for links */
+    color: inherit;
   }
   
   /* -------------------
@@ -29,20 +26,20 @@ body {
   }
   
   #profile-pic {
+    border: 3px solid #5bc0de; /* light blue accent */
     border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
   }
   
-  /* Profile Text Responsiveness */
   #profile h2 {
     font-size: 2rem;
   }
   
   #profile h5 {
     font-size: 1.1rem;
-    color: #6C757D; /* muted grey */
+    color: #666;
   }
   
   /* -------------------
@@ -50,27 +47,26 @@ body {
   ------------------- */
   .intro h1 {
     font-size: 3rem;
-    color: #212121;
+    color: #222;
   }
   
   .intro p.lead {
     font-size: 1.25rem;
-    color: #495057; /* medium grey */
   }
   
   /* -------------------
      About + Skills
   ------------------- */
   #about-skills .card {
-    background: #fff;
     border-radius: 12px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
-    border: 1px solid #212121; /* black border */
-    transition: transform 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    border: 1px solid #5bc0de; /* light blue accent */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   #about-skills .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(91,192,222,0.3); /* light blue shadow */
   }
   
   /* -------------------
@@ -78,16 +74,16 @@ body {
   ------------------- */
   #experience .card, 
   #education .card {
-    background: #fff;
     border-radius: 12px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-    border: 1px solid #DEE2E6; /* light grey border */
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    border: 1px solid #5bc0de; /* light blue accent */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   #experience .card:hover,
   #education .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(91,192,222,0.3);
   }
   
   /* -------------------
@@ -95,16 +91,16 @@ body {
   ------------------- */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3-column layout */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   
   .project-card {
     background: #fff;
-    border: 1px solid #DEE2E6; /* light grey border */
+    border: 1px solid #5bc0de; /* light blue accent */
     border-radius: 12px;
     padding: 15px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
   }
@@ -115,11 +111,25 @@ body {
     margin-bottom: 15px;
     height: 180px;
     object-fit: cover;
+    border: 2px solid #5bc0de; /* light blue frame */
   }
   
   .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+    box-shadow: 0px 6px 15px rgba(91,192,222,0.3);
+  }
+  
+  /* -------------------
+     Buttons
+  ------------------- */
+  .btn-primary {
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+  }
+  
+  .btn-primary:hover {
+    background-color: #31b0d5; /* deeper light blue */
+    border-color: #269abc;
   }
   
   /* -------------------
@@ -127,9 +137,9 @@ body {
   ------------------- */
   footer {
     font-size: 0.9rem;
-    color: #6C757D; /* muted grey */
+    color: #666;
     padding: 15px 0;
-    border-top: 1px solid #DEE2E6;
+    border-top: 2px solid #5bc0de; /* accent line */
   }
   
   /* -------------------
@@ -177,7 +187,7 @@ body {
   
     /* Projects */
     .projects-grid {
-      grid-template-columns: repeat(2, 1fr); /* 2-column layout */
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   
@@ -212,10 +222,9 @@ body {
   
     /* Projects */
     .projects-grid {
-      grid-template-columns: 1fr; /* 1-column layout */
+      grid-template-columns: 1fr;
     }
   }
-  
   /* Custom Light Blue Button */
 .btn-primary {
     background-color: #5bc0de;   /* light blue */
