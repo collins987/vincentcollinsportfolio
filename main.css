@@ -281,7 +281,7 @@ body {
   
 /* Contact Section with Background */
 .contact-section {
-    background: url("images/bgconnect.jpeg") no-repeat center center/cover;
+    color: #222;
     padding: 60px 0;
     position: relative;
   }
@@ -302,6 +302,6 @@ body {
   .contact-section p,
   .contact-section .social-card i,
   .contact-section .social-card p {
-    color: #fff;
+    color: #0000;
   }
   
