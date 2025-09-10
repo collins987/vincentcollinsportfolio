@@ -332,28 +332,25 @@ body.dark-mode #profile h2,
 body.dark-mode #profile h5,
 body.dark-mode #profile p,
 body.dark-mode .intro h1,
+body.dark-mode nav.navbar a,
 body.dark-mode .intro p {
   color: #fff !important;   /* ensure visibility */
 }
 
 body.dark-mode #profile h5.text-muted {
-  color: #fff !important;   /* light gray for muted text */
+  color: #fff !important;  
 }
 
 body.dark-mode .profile p {
   color: #fff !important;
 }
 
-/* Navbar Dark Mode */
-body.dark-mode nav,
-body.dark-mode nav a {
-  color: #fff !important;
-  background-color: #1e1e1e; /* dark navbar background */
-}
-
-body.dark-mode nav a:hover,
-body.dark-mode nav a.active-link {
-  color: #5bc0de !important; /* light blue accent */
+/* Dark Mode Fix for Profile, Intro, and Navbar */
+body.dark-mode #profile,
+body.dark-mode .intro,
+body.dark-mode nav.navbar {
+  background-color: #000 !important; /* pure black background */
+  color: #fff !important;           /* white text for contrast */
 }
 
 
