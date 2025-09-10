@@ -328,10 +328,34 @@ body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode a,
 body.dark-mode .btn,
-body.dark-mode .intro p,
+body.dark-mode #profile h2,
+body.dark-mode #profile h5,
+body.dark-mode #profile p,
+body.dark-mode .intro h1,
+body.dark-mode .intro p {
+  color: #fff !important;   /* ensure visibility */
+}
+
+body.dark-mode #profile h5.text-muted {
+  color: #fff !important;   /* light gray for muted text */
+}
+
 body.dark-mode .profile p {
   color: #fff !important;
 }
+
+/* Navbar Dark Mode */
+body.dark-mode nav,
+body.dark-mode nav a {
+  color: #fff !important;
+  background-color: #1e1e1e; /* dark navbar background */
+}
+
+body.dark-mode nav a:hover,
+body.dark-mode nav a.active-link {
+  color: #5bc0de !important; /* light blue accent */
+}
+
 
 /* Ensure text in light mode is black */
 body:not(.dark-mode),
