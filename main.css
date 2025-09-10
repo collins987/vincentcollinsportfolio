@@ -115,47 +115,52 @@ body {
   }
   
   
-  /* -------------------
-	 Contact Section
-  ------------------- */
-  #contact {
-	background: #f9fbfd;
-	padding: 60px 20px;
-	border-radius: 12px;
-  }
-  #contact h2 {
-	font-weight: bold;
-	margin-bottom: 10px;
-  }
-  #contact .btn-resume {
-	margin-top: 30px;
-	margin-bottom: 30px;
-    border: #000;
-  }
-  .social-card {
-	display: inline-block;
-	text-decoration: none;
-	color: #333;
-	transition: transform 0.3s ease, color 0.3s ease;
-  }
-  .social-card i {
-	background: #e6f7fb;
-	padding: 20px;
-	border-radius: 50%;
-	transition: background 0.3s ease, transform 0.3s ease;
-  }
-  .social-card p {
-	margin-top: 10px;
-	font-weight: 500;
-  }
-  .social-card:hover i {
-	background: #5bc0de;
-	color: #fff;
-	transform: scale(1.1);
-  }
-  .social-card:hover {
-	color: #5bc0de;
-  }
+  /* Contact Section */
+.contact-card {
+  border-radius: 12px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon i {
+  color: #5bc0de;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover i {
+  color: #000; /* subtle hover effect */
+  transform: scale(1.1);
+}
+
+.icon-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover .icon-img {
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+
+/* Resume Button Black Border */
+.btn-resume {
+  border: 2px solid #000;
+  margin-top: 30px;
+}
+
   
   /* -------------------
 	 Footer
