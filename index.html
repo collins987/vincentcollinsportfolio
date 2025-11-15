@@ -3,262 +3,691 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vincent Collins Portfolio</title>
+  <title>Vincent Collins | Business & Data Analyst | Back-End Developer | Cyber Security Analyst</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="main.css">
-
 </head>
 <body>
-  <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
-  <div class="container">
-    <a class="navbar-brand font-weight-bold" href="#profile">VC</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about-skills">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-  <!-- Profile Section -->
-  <div class="container my-5 fade-in" id="profile">
-    <div class="d-flex align-items-center">
-      <img id="profile-pic" src="images/profile.jpeg" alt="Vincent Collins" 
-           class="rounded-circle mr-4" style="width: 150px; height: 150px; object-fit: cover;">
-      <div>
-        <h2 class="mb-1">Vincent Collins</h2>
-        <h5 class="text-muted">Business & Data Analyst | Full Stack Developer | Cloud Security</h5>
-        <p class="mt-2">
-          Passionate about data, cloud services, and building scalable solutions that align business needs 
-          with technology.
-        </p>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img src="images/profile.jpeg" alt="VC" class="brand-logo" onerror="this.style.display='none'">
+        <span class="brand-text">Tech with VC</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- Intro Section -->
-  <section class="intro text-center py-5 bg-light fade-in">
-    <div class="container">
-      <h1 class="display-4 font-weight-bold">Hi, I'm Vincent Collins 👋</h1>
-      <p class="lead mt-3">
-        Business & Data Analyst | Full Stack Developer passionate about building scalable solutions, 
-        driving data-driven decisions, and securing modern cloud environments.
-      </p>
-      <p>
-        With experience spanning Business Analysis, IT Operations, Data Analytics, and Backend Development, 
-        I bridge the gap between business needs and technical execution.
-      </p>
-      <a href="#about-skills" class="btn btn-primary btn-lg mt-3">Learn More About Me</a>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12 text-center hero-content">
+          <h1 class="hero-title mb-4">
+            <span class="typing-text"></span><span class="hero-emoji">👋</span>
+          </h1>
+          <h2 class="hero-subtitle mb-4">
+            Business & Data Analyst | Back-End Engineer | Cloud Security Analyst
+          </h2>
+          <p class="hero-description mb-5">
+            As a <strong>technical engineer and analyst</strong>, I specialize in converting business requirements into <strong>secure, data-driven solutions</strong>, with expertise ranging from <strong>workflow optimization</strong> to <strong>back-end engineering</strong> and <strong>multi-cloud security</strong>.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary btn-lg mr-3">
+              <i class="fas fa-briefcase mr-2"></i>View My Work
+            </a>
+            <a href="Documents/Vincent Onchieku Collins Resume.pdf" download class="btn btn-outline-light btn-lg">
+              <i class="fas fa-download mr-2"></i>Download Resume
+            </a>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="hero-social mt-5">
+            <a href="https://github.com/collins987/" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:vincentcollins690@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <a href="#about">
+        <i class="fas fa-chevron-down"></i>
+      </a>
     </div>
   </section>
 
-  <!-- About Me & Skills Section -->
-  <div class="container my-5 fade-in" id="about-skills">
-    <div class="row">
-      <div class="col-md-6 fade-in">
-        <div class="card card-body h-100 border-dark">
-          <h4>About Me</h4>
-          <hr>
-          <p>
-            I’m Vincent Collins, a dynamic Business Analyst and Full Stack Developer with a background in 
-            IT operations, software engineering, and data analysis. I specialize in analyzing business 
-            requirements, designing solutions, and implementing systems that optimize workflows and 
-            support organizational growth.
-          </p>
-          <p>
-            Over time, I’ve honed my skills in <strong>Python, Django, MERN stack, SQL, and cloud services</strong>. 
-            My experience spans from supporting IT operations at Nakuru Law Courts, to analyzing data 
-            at Garnet Finance, and most recently driving digital transformation at the Kenya Revenue Authority (KRA).
-          </p>
-          <p>
-            Beyond technical expertise, I bring strong communication, problem-solving, and stakeholder 
-            engagement skills that allow me to align technical teams with business objectives.
-          </p>
+  <!-- Floating CTA Button -->
+  <button class="floating-cta" id="floatingCTA" title="Let's chat">
+    <i class="fas fa-comments"></i>
+    <span class="floating-cta-tooltip">Let's Talk!</span>
+  </button>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 col-6 mb-4">
+          <div class="stat-item">
+            <i class="fas fa-certificate stat-icon"></i>
+            <h3 class="stat-number">2.5+</h3>
+            <p class="stat-label">Years Experience</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <div class="stat-item">
+            <i class="fas fa-project-diagram stat-icon"></i>
+            <h3 class="stat-number">10+</h3>
+            <p class="stat-label">Key Projects</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <div class="stat-item">
+            <i class="fas fa-shield-alt stat-icon"></i>
+            <h3 class="stat-number">100%</h3>
+            <p class="stat-label">Security Compliant</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <div class="stat-item">
+            <i class="fas fa-certificate stat-icon"></i>
+            <h3 class="stat-number">6+</h3>
+            <p class="stat-label">Certifications</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+          <div class="stat-item">
+            <i class="fas fa-chart-line stat-icon"></i>
+            <h3 class="stat-number">25%</h3>
+            <p class="stat-label">Operations Improved</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2 class="section-title">About Me</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">I bridge the gap between business and technology</p>
+        </div>
+      </div>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4">
+          <div class="about-image-wrapper">
+            <img src="images/profile.jpeg" alt="Vincent Collins" class="about-image img-fluid rounded shadow-lg"
+                 onerror="this.src='https://via.placeholder.com/500x600?text=Vincent+Collins'">
+            <div class="about-image-overlay">
+              <div class="overlay-text">
+                <i class="fas fa-quote-left"></i>
+                <p>Building secure, scalable solutions for you</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-7">
+          <div class="about-content">
+            <h3 class="mb-4">My Journey</h3>
+            <p class="lead-text mb-4">
+              Why choose one path when you can master three? 
+              My career is built on a unique 'trident' of skills.
+            </p>
+            
+            <p class="mb-4">
+              I started as a <strong>Business & Data Analyst</strong>, diving deep into why a business has a problem. 
+              At firms like KRA and Garnet Finance, I translated stakeholder needs, mapped workflows, and used data to deliver a 15% productivity boost 
+              and a 25% reduction in errors. I quickly realized I didn't just want to identify problems; I wanted to build the solutions. This drove me to master 
+              <strong>Back-End Development</strong>, engineering production-ready APIs with Python, Django, and Docker. Today, a great solution isn't just functional—it must be secure. 
+              My focus is on <strong>Cloud & Cybersecurity</strong>. I'm certified in Azure Security and AWS, and I'm actively training as an Ethical Hacker. 
+            </p>
+
+            <div class="highlight-box mb-4">
+              <i class="fas fa-lightbulb highlight-icon"></i>
+              <div>
+                <h5>My Philosophy</h5>
+                <p class="mb-0">
+                  To connect business logic and technical architecture, focusing on solutions that are both user-centric and robust. 
+                  <strong>I design and map out the blueprint, engineer the engine and secure the vault</strong>.
+                </p>
+              </div>
+            </div>
+
+            <p class="mb-4">
+              <strong>Current Focus:</strong> Specializing in secure back-end systems with cloud-native 
+              architecture, combining AWS, Azure security controls, and modern DevOps practices.
+            </p>
+
+            <!-- Skills Pills -->
+            <div class="skills-pills">
+              <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+              <span class="skill-pill"><i class="fas fa-database"></i> Django</span>
+              <span class="skill-pill"><i class="fab fa-node-js"></i> Node.js</span>
+              <span class="skill-pill"><i class="fab fa-react"></i> React</span>
+              <span class="skill-pill"><i class="fab fa-aws"></i> AWS</span>
+              <span class="skill-pill"><i class="fab fa-microsoft"></i> Azure</span>
+              <span class="skill-pill"><i class="fab fa-google"></i> GCP</span>
+              <span class="skill-pill"><i class="fab fa-docker"></i> Docker</span>
+              <span class="skill-pill"><i class="fas fa-chart-line"></i> Data Analysis</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="col-md-6 fade-in">
-        <div class="card card-body h-100 border-dark">
-          <h4>Skills</h4>
-          <hr>
-          <h5>Languages</h5>
-          <p>Python, Django, SQL, HTML/CSS, Git, JavaScript, MERN (MongoDB, Express.js, React, Node.js)</p>
+      <!-- Statistics Cards -->
+      <div class="row mt-5 mb-5">
+      </div>
 
-          <h5>Skills</h5>
-          <p>Data Analysis, Troubleshooting, API Integration, Communication, Scripting, Cloud Services</p>
+      <!-- Skills Section - Integrated -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h3 class="text-center mb-5">Technical Skills & Expertise</h3>
+          
+          <!-- Proficiency Progress Bars -->
+          <div class="skills-proficiency-section mb-5">
+            <h5 class="mb-4">Proficiency Levels</h5>
+            <div class="skills-progress-container">
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Cloud Services</span>
+                  <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 90%"></div>
+                </div>
+              </div>
 
-          <h5>Tools</h5>
-          <p>PowerBi, XAMP, GitHub, Jupyter Notebook, VS Code, MS Office, Docker, Firebase</p>
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Programming & Backend</span>
+                  <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
 
-          <h5>Packages</h5>
-          <p>Pandas, Seaborn, Matplotlib, BeautifulSoup, NumPy, Scikit-learn</p>
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Cybersecurity & Networking</span>
+                  <span class="skill-percent">80%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Data & Automation</span>
+                  <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Frameworks & Tools</span>
+                  <span class="skill-percent">88%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Categories Grid -->
+          <div class="skills-categories-section">
+            <h5 class="mb-4">Technical Categories</h5>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <h6>Languages & Frameworks</h6>
+                  <p>Python, Django, JavaScript, Node.js, Express.js, React, Bash, SQL, HTML/CSS</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <h6>Cloud & DevOps</h6>
+                  <p>AWS, Azure, GCP, Docker, Kubernetes, Jenkins, Ansible, CI/CD, Gunicorn, Firebase, Render, Networking</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                  <h6>Data & Analytics</h6>
+                  <p>Power BI, Pandas, NumPy, Matplotlib, Seaborn, SQL, Excel</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h6>Security</h6>
+                  <p>JWT Auth, Azure Security, Microsoft Defender, Zero-Trust Architecture, API Security, Penetration Testing</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Work Experience Section -->
-  <div class="container my-5 fade-in" id="experience">
-    <h2 class="mb-4">Work Experience</h2>
-    <div class="card card-body mb-3 fade-in stagger"> 
-      <h5>Business Analyst <span class="text-muted">| Kenya Revenue Authority (KRA), Nairobi</span></h5>
-      <p><em>May 2025 – May 2026</em></p>
-      <ul>
-        <li>Engaged stakeholders across departments to define business goals and translate them into functional requirements.</li>
-        <li>Mapped workflows to identify automation opportunities, efficiency gains, and cost reduction strategies.</li>
-        <li>Acted as a liaison between technical teams and business units, ensuring clear expectations throughout projects.</li>
-        <li>Reviewed UI/UX prototypes and system designs for business alignment and user needs.</li>
-        <li>Utilized SQL, Excel, and BI dashboards to track KPIs and support data-driven decisions.</li>
-        <li>Created test plans, facilitated UAT, and documented feedback for solution validation.</li>
-      </ul>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>Data Analyst <span class="text-muted">| Garnet Finance, Nairobi</span></h5>
-      <p><em>Sept 2024 – Dec 2024</em></p>
-      <ul>
-        <li>Collaborated with engineering teams to optimize workflows, reducing errors by 25% and boosting productivity by 15%.</li>
-        <li>Automated financial analysis tasks using Python and Bash scripts, streamlining workflows.</li>
-        <li>Identified security vulnerabilities and supported compliance initiatives in distributed systems.</li>
-        <li>Demonstrated strong time management, communication, and independence in a remote role.</li>
-      </ul>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>IT Intern <span class="text-muted">| Nakuru Law Courts, Nakuru</span></h5>
-      <p><em>May 2023 – Aug 2023</em></p>
-      <ul>
-        <li>Implemented security patches, improving system protection by 25%.</li>
-        <li>Monitored performance, resolved remote support issues, achieving 90% user satisfaction.</li>
-        <li>Managed user accounts, IT assets, and supported audio-visual setups for court sessions.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Education Section -->
-  <div class="container my-5 fade-in" id="education">
-    <h2 class="mb-4">Education</h2>
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>Azure Security Engineer Associate <span class="text-muted">| Cyber Shujaa, Nairobi</span></h5>
-      <p><em>June 2025 – Aug 2025</em></p>
-      <p>Hands-on training in cloud security, identity management, and network protection using Azure Defender & Sentinel.</p>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>Microsoft Security, Compliance & Identity Fundamentals <span class="text-muted">| Cyber Shujaa, Nairobi</span></h5>
-      <p><em>May 2025</em></p>
-      <p>Gained foundational knowledge of Microsoft Entra ID, zero-trust principles, compliance tools, and Defender solutions.</p>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>ALX Back-End ProDev <span class="text-muted">| ALX Africa, Nairobi</span></h5>
-      <p><em>June 2025 – Oct 2025</em></p>
-      <p>Mastered advanced backend technologies (Python, Django, JavaScript, SQL) for building scalable applications.</p>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>ALX Professional Foundations <span class="text-muted">| ALX Africa, Nairobi</span></h5>
-      <p><em>Mar 2025 – June 2025</em></p>
-      <p>Acquired leadership and workplace readiness skills to thrive in professional environments.</p>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>AWS Cloud Practitioner <span class="text-muted">| AWS re/Start, Nairobi</span></h5>
-      <p><em>May 2024 – Aug 2024</em></p>
-      <p>Learned fundamentals of AWS services, cloud security, DevOps tools, containerization, and CI/CD practices.</p>
-    </div>
-
-    <div class="card card-body mb-3 fade-in stagger">
-      <h5>Bachelor’s Degree in Business Information Technology <span class="text-muted">| Kabarak University, Nakuru</span></h5>
-      <p><em>Sept 2019 – Dec 2024</em></p>
-      <p>Relevant coursework: Data Communication, Operating Systems, Web Programming, Java, Data Mining, OOP, and Database Systems.</p>
-    </div>
-  </div>
-
-  <!-- Projects -->
-  <div class="container my-5 projects-section fade-in" id="projects">
-    <h2 class="mb-4">Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card fade-in stagger">
-        <img src="images/sc900-labs.jpeg" alt="SC-900 Labs">
-        <h5>Microsoft SC-900 Labs</h5>
-        <p>Hands-on labs with Microsoft Entra ID, Defender, Sentinel, and Purview exploring compliance and governance.</p>
+  <!-- Services Section -->
+  <section class="services-section py-5" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2 class="section-title">My Services</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">The Trident of Tech: Strategy, Engineering & Security</p>
+        </div>
       </div>
 
-      <div class="project-card fade-in stagger">
-        <img src="images/az500-labs.jpeg" alt="AZ-500 Labs">
-        <h5>Azure Security Engineer (AZ-500) Labs</h5>
-        <p>Practical labs covering Azure RBAC, firewalls, SQL protection, Key Vault, and Sentinel integrations.</p>
-      </div>
+      <div class="row">
+        <!-- Service 1: Business & Process-Automation Analyst -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="service-title">Business & Process-Automation Analyst</h4>
+            <p class="service-description">
+              I don't just gather requirements; I find opportunities. I'll analyze your business processes, 
+              identify optimization areas, and translate stakeholder needs into technical blueprints. Using my 
+              expertise in Power BI and n8n, I build the automated workflows and dashboards that reduce operational 
+              errors by 25% and give your teams back 10+ hours per week.
+            </p>
+            <div class="service-skills">
+              <span class="service-skill-tag">Power BI</span>
+              <span class="service-skill-tag">n8n</span>
+              <span class="service-skill-tag">Python</span>
+              <span class="service-skill-tag">Process Mapping</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="project-card fade-in stagger">
-        <img src="images/chat-app.jpeg" alt="Real-Time Chat App">
-        <h5>Real-Time Chat Application</h5>
-        <p>Developed with MERN stack, including secure authentication and access control.</p>
-      </div>
+        <!-- Service 2: Secure Back-End & API Engineering -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h4 class="service-title">Secure Back-End & API Engineering</h4>
+            <p class="service-description">
+              Go from idea to production-ready application. I engineer secure and scalable back-ends using Python, 
+              Django, and Node.js. My services include building containerized RESTful APIs with JWT authentication, 
+              integrating with databases like PostgreSQL and MongoDB, and deploying on cloud platforms like Render 
+              and AWS.
+            </p>
+            <div class="service-skills">
+              <span class="service-skill-tag">Python/Django</span>
+              <span class="service-skill-tag">Node.js</span>
+              <span class="service-skill-tag">Docker</span>
+              <span class="service-skill-tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="project-card fade-in stagger">
-        <img src="images/doctor-app.jpeg" alt="Doctor Consultation App">
-        <h5>Doctor Consultation Application</h5>
-        <p>Appointment booking and consultation system using Firebase with secure real-time data storage.</p>
+        <!-- Service 3: Cloud Security & Penetration Testing -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4 class="service-title">Cloud Security & Penetration Testing</h4>
+            <p class="service-description">
+              Your infrastructure is only as strong as its weakest link. As an Azure Certified Security Engineer 
+              and trainee Ethical Hacker, I harden your multi-cloud environment. I provide services in vulnerability 
+              assessments, penetration testing, and identity management, implementing a 'defense in depth' strategy 
+              to protect your data.
+            </p>
+            <div class="service-skills">
+              <span class="service-skill-tag">Azure Security</span>
+              <span class="service-skill-tag">Penetration Testing</span>
+              <span class="service-skill-tag">AWS/GCP</span>
+              <span class="service-skill-tag">Identity Mgmt</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Contact Section -->
-<section id="contact" class="container my-5">
-  <div class="card contact-card p-5">
-    <h2 class="mb-4 text-center">Let’s Connect</h2>
-    <p class="text-center mb-5">Feel free to reach out through the platforms below:</p>
-
-    <div class="social-icons-wrapper d-flex justify-content-center flex-wrap">
-      <a href="https://github.com/collins987/" target="_blank" class="social-icon" aria-label="GitHub">
-        <img src="images/github.png" alt="GitHub" class="icon-img">
-      </a>
-      <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="social-icon" aria-label="LinkedIn">
-        <img src="images/linkedin.png" alt="LinkedIn" class="icon-img">
-      </a>
-      <a href="mailto:vincentcollins690@gmail.com" class="social-icon" aria-label="Email">
-        <img src="images/email.jpg" alt="Email" class="icon-img">
-      </a>
-      <a href="tel:+254758550468" class="social-icon" aria-label="Phone">
-        <img src="images/phone-icon.jpeg" alt="Phone" class="icon-img">
-      </a>
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">From problem identification to production deployment</p>
+        </div>
+      </div>
     </div>
 
-    <div class="text-center">
-      <a href="documents/Vincent_Collins_Resume.pdf" class="btn btn-lightblue btn-lg btn-resume" download>
-        Download Resume
-      </a>
+    <!-- Navigation Button - Left -->
+    <button class="projects-nav-btn projects-nav-left" aria-label="Previous project">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="projects-carousel-wrapper">
+      <div class="projects-carousel-container">
+        <div class="projects-carousel-track" id="projectsCarousel">
+          <!-- Projects will be dynamically inserted here -->
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
+    <!-- Navigation Button - Right -->
+    <button class="projects-nav-btn projects-nav-right" aria-label="Next project">
+      <i class="fas fa-chevron-right"></i>
+    </button>
 
+    <!-- Bottom Navigation and Controls -->
+    <div class="projects-bottom-controls">
+      <button class="projects-nav-dot" data-index="0" aria-label="Project 1"></button>
+      <button class="projects-nav-dot" data-index="1" aria-label="Project 2"></button>
+      <button class="projects-nav-dot" data-index="2" aria-label="Project 3"></button>
+      <button class="projects-nav-dot" data-index="3" aria-label="Project 4"></button>
+      <button class="projects-nav-dot" data-index="4" aria-label="Project 5"></button>
+      
+      <button class="projects-play-pause" id="projectsPlayPause" aria-label="Play/Pause carousel">
+        <i class="fas fa-pause"></i>
+      </button>
+    </div>
+  </section>
+
+  
+  
+
+  <!-- Currently Exploring Section -->
+  <section class="exploring-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2 class="section-title text-white">Currently Exploring</h2>
+          <div class="title-underline bg-white"></div>
+          <p class="section-subtitle text-white">Continuous learning is at the core of my development</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="exploring-card">
+            <div class="exploring-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>Ethical Hacking</h4>
+            <p>I'm learning to think like an attacker.<br> By mastering penetration testing with tools like Metasploit and Burp Suite, I'm learning to find and fix vulnerabilities before they're exploited.</p>
+            <span class="status-badge exploring">Ongoing</span><!--replace badge "exploring" with "active" for green color -->
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="exploring-card">
+            <div class="exploring-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h4>n8n Workflow Automation</h4>
+            <p>Why do manual work? I'm mastering the n8n platform to build complex, multi-step automations, connect disparate APIs, and deploy production-ready workflows with minimal code.</p>
+            <span class="status-badge exploring">Ongoing</span>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="exploring-card">
+            <div class="exploring-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4>Google Cloud & GenAI</h4>
+            <p>Expanding my multi-cloud expertise. I'm diving deep into Google Cloud Platform, focusing on its powerful GenAI capabilities, application modernization, and advanced data services.</p>
+            <span class="status-badge exploring">Ongoing</span>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="exploring-card">
+            <div class="exploring-icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <h4>Networking</h4>
+            <p>Deepening understanding of networking principles</p>
+            <span class="status-badge upcoming">Upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Timeline -->
+  <section id="journey" class="journey-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2 class="section-title">My Learning Journey</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">A visual story of continuous growth and skill development</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">Oct 2025 – Nov 2025</span>
+            <h4>ALX Google Cloud Program</h4>
+            <p>Azure Security Engineer | Zero-trust architecture, Sentinel SIEM, Microsoft Defender</p>
+            <div class="timeline-icon">
+              <i class="fab fa-google"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">Oct 2025 – Dec 2025</span>
+            <h4>n8n Workflow Automation</h4>
+            <p>ALX Professional Foundations | Leadership skills and workplace readiness training</p>
+            <div class="timeline-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">Jun 2025 - Oct 2025</span>
+            <h4>Back-End Specialization</h4>
+            <p>ALX Back-End ProDev | Advanced Django, APIs, and SQL for scalable applications</p>
+            <div class="timeline-icon">
+              <i class="fas fa-server"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">June 2025 - Aug 2025</span>
+            <h4>Cloud Security Expert</h4>
+            <p>Azure Security Engineer | Zero-trust architecture, Sentinel SIEM, Microsoft Defender</p>
+            <div class="timeline-icon">
+              <i class="fab fa-microsoft"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">May 2025 - Present</span>
+            <h4>Business Analysis</h4>
+            <p>Business Analyst at Kenya Revenue Authority | Stakeholder engagement, process mapping, UAT facilitation</p>
+            <div class="timeline-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">Mar 2025 - Jun 2025</span>
+            <h4>Professional Development</h4>
+            <p>ALX Professional Foundations | Leadership skills and workplace readiness training</p>
+            <div class="timeline-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">Sep 2024 - Dec 2024</span>
+            <h4>Data Analytics</h4>
+            <p>Data Analyst at Garnet Finance | Reduced errors by 25% through Python automation and data analysis</p>
+            <div class="timeline-icon">
+              <i class="fas fa-database"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">May 2024 - Aug 2024</span>
+            <h4>Cloud Infrastructure</h4>
+            <p>AWS Cloud Practitioner | Mastered DevOps tools: Docker, Kubernetes, Jenkins, CI/CD pipelines</p>
+            <div class="timeline-icon">
+              <i class="fab fa-aws"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">May 2023 - Aug 2023</span>
+            <h4>IT Operations & Security</h4>
+            <p>IT Intern at Nakuru Law Courts | Improved system security by 25%, achieved 90% user satisfaction</p>
+            <div class="timeline-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">Sept 2019 - Dec 2024</span>
+            <h4>Business IT Foundation</h4>
+            <p>Bachelor's Degree in Business Information Technology at Kabarak University. Built foundation in databases, programming, and business systems.</p>
+            <div class="timeline-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="text-center py-3">
-    <p>&copy; 2025 Vincent Collins. All rights reserved.</p>
+  <footer class="footer bg-dark text-white py-5" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-4">
+          <h4 class="mb-3">Let's Connect</h4>
+          <p class="text-muted mb-4">I'm always open to discussing new opportunities and collaborations</p>
+          
+          <!-- Social Links & Actions -->
+          <div class="footer-social-links mb-4">
+            <a href="https://github.com/collins987/" target="_blank" class="footer-social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="footer-social-link" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:vincentcollins690@gmail.com" class="footer-social-link" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+254758550468" class="footer-social-link" title="Phone">
+              <i class="fas fa-phone"></i>
+            </a>
+            <a href="Documents/Vincent Onchieku Collins Resume.pdf" class="footer-social-link" download title="Download Resume">
+              <i class="fas fa-download"></i>
+            </a>
+            <a href="#" class="footer-social-link" title="Location: Nairobi, Kenya" onclick="alert('📍 Nairobi, Kenya'); return false;">
+              <i class="fas fa-map-marker-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p class="text-muted small mb-0">&copy; 2025 Vincent Collins. All rights reserved. Don't forget to reach out.</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <!-- External JavaScript -->
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <!-- Custom JS -->
   <script src="main.js"></script>
 </body>
 </html>
