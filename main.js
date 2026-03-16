@@ -89,7 +89,7 @@ const observer = new IntersectionObserver(entries => {
 }, observerOptions);
 
 // Animate elements on scroll
-const animateOnScroll = document.querySelectorAll('.stat-item, .skill-category, .exploring-card, .timeline-item, .contact-method');
+const animateOnScroll = document.querySelectorAll('.stat-item, .skill-category, .exploring-card, .timeline-item');
 animateOnScroll.forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
@@ -102,26 +102,40 @@ animateOnScroll.forEach(el => {
 // =====================
 const statNumbers = document.querySelectorAll('.stat-number');
 
-const animateValue = (element, start, end, duration) => {
+const animateValue = (element, end, duration) => {
+  const hasPercent = element.dataset.suffix === '%';
+  const hasPlus = element.dataset.suffix === '+';
+  const decimals = Number(element.dataset.decimals || 0);
   let startTimestamp = null;
+
+  const formatValue = (value) => {
+    const fixedValue = value.toFixed(decimals);
+    const normalizedValue = decimals > 0 ? fixedValue.replace(/\.0+$/, '') : String(Math.round(value));
+
+    if (hasPercent) {
+      return `${normalizedValue}%`;
+    }
+    if (hasPlus) {
+      return `${normalizedValue}+`;
+    }
+
+    return normalizedValue;
+  };
+
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-    const value = Math.floor(progress * (end - start) + start);
-    
-    // Handle percentage or regular numbers
-    if (element.textContent.includes('%')) {
-      element.textContent = value + '%';
-    } else if (element.textContent.includes('+')) {
-      element.textContent = value + '+';
-    } else {
-      element.textContent = value;
-    }
+    const value = progress * end;
+
+    element.textContent = formatValue(value);
     
     if (progress < 1) {
       window.requestAnimationFrame(step);
+    } else {
+      element.textContent = formatValue(end);
     }
   };
+
   window.requestAnimationFrame(step);
 };
 
@@ -129,9 +143,19 @@ const statsObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const target = entry.target;
-      const text = target.textContent;
-      const number = parseInt(text.replace(/\D/g, ''));
-      animateValue(target, 0, number, 2000);
+      const originalText = target.textContent.trim();
+      const numericValue = parseFloat(originalText.replace(/[^\d.]/g, ''));
+
+      if (!Number.isFinite(numericValue)) {
+        statsObserver.unobserve(target);
+        return;
+      }
+
+      target.dataset.suffix = originalText.includes('%') ? '%' : (originalText.includes('+') ? '+' : '');
+      target.dataset.decimals = numericValue % 1 !== 0 ? '1' : '0';
+      target.textContent = '0';
+
+      animateValue(target, numericValue, 2000);
       statsObserver.unobserve(target);
     }
   });
@@ -174,6 +198,11 @@ function ensureTimelineIcons() {
 function createProjectCarousel() {
   const carouselTrack = document.getElementById('projectsCarousel');
   if (!carouselTrack) return;
+
+  const createExcerpt = (text, maxLength = 120) => {
+    if (!text || text.length <= maxLength) return text;
+    return `${text.slice(0, maxLength).trim()}...`;
+  };
 
   // Projects data
   const projects = [
@@ -234,10 +263,10 @@ function createProjectCarousel() {
     }
   ];
 
-  // Build carousel HTML - include first project at end for infinite loop effect
-  const projectsWithLoop = [...projects, projects[0]];
+  const projectsWithLoop = [projects[projects.length - 1], ...projects, projects[0]];
   const carouselHTML = projectsWithLoop.map((project, index) => {
     const difficultyClass = project.difficulty?.toLowerCase() || 'intermediate';
+    const detailsId = `projectDetails-${index}`;
     const metricsHTML = project.metrics ? Object.entries(project.metrics)
       .map(([key, value]) => `<span class="project-metric"><strong>${key}:</strong> ${value}</span>`)
       .join('') : '';
@@ -254,25 +283,40 @@ function createProjectCarousel() {
         <div class="project-carousel-content">
           <h3 class="project-carousel-title">${project.title}</h3>
           <p class="project-carousel-tagline">${project.tagline}</p>
-          
-          <div class="project-detail">
-            <h5><i class="fas fa-exclamation-circle"></i> The Problem</h5>
-            <p>${project.problem}</p>
-          </div>
-          
-          <div class="project-detail">
-            <h5><i class="fas fa-cogs"></i> The Solution</h5>
-            <p>${project.solution}</p>
-          </div>
-          
-          <div class="project-carousel-tech">
-            ${project.tech.map(tech => `<span class="project-carousel-tech-badge">${tech}</span>`).join('')}
-          </div>
+
+          <p class="project-carousel-summary">
+            ${createExcerpt(project.problem, 135)}
+          </p>
+
           <div class="project-carousel-outcome">
             <i class="fas fa-check-circle"></i>
             <strong>Outcome:</strong> ${project.outcome}
           </div>
-          ${metricsHTML ? `<div class="project-metrics-grid">${metricsHTML}</div>` : ''}
+
+          <div class="project-carousel-actions">
+            <button class="project-details-toggle" data-target="${detailsId}" aria-expanded="false" type="button">
+              <i class="fas fa-plus-circle"></i>
+              <span>View Details</span>
+            </button>
+          </div>
+
+          <div class="project-carousel-details" id="${detailsId}">
+            <div class="project-detail">
+              <h5><i class="fas fa-exclamation-circle"></i> The Problem</h5>
+              <p>${project.problem}</p>
+            </div>
+
+            <div class="project-detail">
+              <h5><i class="fas fa-cogs"></i> The Solution</h5>
+              <p>${project.solution}</p>
+            </div>
+
+            <div class="project-carousel-tech">
+              ${project.tech.map(tech => `<span class="project-carousel-tech-badge">${tech}</span>`).join('')}
+            </div>
+
+            ${metricsHTML ? `<div class="project-metrics-grid">${metricsHTML}</div>` : ''}
+          </div>
         </div>
       </div>
     </article>
@@ -288,144 +332,239 @@ function createProjectCarousel() {
   const rightBtn = document.querySelector('.projects-nav-right');
   const playPauseBtn = document.getElementById('projectsPlayPause');
   const navDots = document.querySelectorAll('.projects-nav-dot');
+  const detailsToggleButtons = document.querySelectorAll('.project-details-toggle');
+  const projectCards = Array.from(track.querySelectorAll('.project-carousel-card'));
+  const section = document.getElementById('projects');
 
   if (!track || !container || !leftBtn || !rightBtn) return;
 
-  // Calculate scroll amount based on screen width
-  function getScrollAmount() {
-    const width = window.innerWidth;
-    if (width >= 1200) {
-      return 920; // Full desktop
-    } else if (width >= 1024) {
-      return 850; // Laptop
-    } else if (width >= 768) {
-      return 800; // Tablet landscape
-    } else if (width >= 600) {
-      return 750; // Tablet portrait
-    } else if (width >= 480) {
-      return 700; // Mobile landscape
-    } else {
-      return 650; // Mobile portrait
-    }
+  function getSlideWidth() {
+    const firstCard = track.querySelector('.project-carousel-card');
+    if (!firstCard) return 700;
+
+    const trackStyles = window.getComputedStyle(track);
+    const gapValue = parseFloat(trackStyles.gap || trackStyles.columnGap || '0');
+    return firstCard.getBoundingClientRect().width + gapValue;
   }
 
-  let scrollAmount = getScrollAmount();
-  let autoScrollInterval = null;
-  let isPlaying = true;
-  let currentProjectIndex = 0;
-  const totalProjects = 5; // Only 5 real projects, 6th is duplicate for looping
-  const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds, no pause
+  function getTranslateForLoopIndex(loopIndex) {
+    const targetCard = projectCards[loopIndex];
+    if (!targetCard) return 0;
 
-  // Update active dot based on current position
+    const containerCenter = container.clientWidth / 2;
+    const cardCenter = targetCard.offsetLeft + (targetCard.offsetWidth / 2);
+    return containerCenter - cardCenter;
+  }
+
+  function toRealIndex(loopIndex) {
+    if (loopIndex === 0) return totalProjects - 1;
+    if (loopIndex === totalProjects + 1) return 0;
+    return loopIndex - 1;
+  }
+
+  function setTrackPosition(withTransition = true) {
+    const translateX = getTranslateForLoopIndex(activeLoopIndex);
+
+    track.style.transition = withTransition ? CAROUSEL_TRANSITION : 'none';
+    track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+  }
+
   function updateActiveDot() {
     navDots.forEach((dot, index) => {
-      dot.classList.remove('active');
-      if (index === currentProjectIndex) {
-        dot.classList.add('active');
+      dot.classList.toggle('active', index === currentProjectIndex);
+    });
+  }
+
+  function updateCardFocus() {
+    projectCards.forEach((card, cardIndex) => {
+      card.classList.remove('is-active', 'is-adjacent', 'is-distant');
+
+      const distance = Math.abs(cardIndex - activeLoopIndex);
+      if (distance === 0) {
+        card.classList.add('is-active');
+      } else if (distance === 1) {
+        card.classList.add('is-adjacent');
+      } else {
+        card.classList.add('is-distant');
       }
     });
   }
 
-  // Scroll to specific project index with seamless loop
-  function scrollToProject(index, immediate = false) {
-    currentProjectIndex = index % totalProjects;
-    const scrollPosition = index * scrollAmount;
-    track.scrollTo({
-      left: scrollPosition,
-      behavior: immediate ? 'auto' : 'smooth'
-    });
+  function syncState() {
+    currentProjectIndex = toRealIndex(activeLoopIndex);
     updateActiveDot();
+    updateCardFocus();
+  }
 
-    // If we scrolled to the duplicate (6th item), jump back to first after animation
-    if (index >= totalProjects) {
-      setTimeout(() => {
-        track.scrollTo({
-          left: 0,
-          behavior: 'auto'
-        });
-        currentProjectIndex = 0;
-        updateActiveDot();
-      }, 500); // Wait for smooth scroll to finish
+  function refreshLayout() {
+    slideWidth = getSlideWidth();
+    setTrackPosition(false);
+    syncState();
+  }
+
+  let autoScrollTimeout = null;
+  let isPlaying = true;
+  let userStoppedAutoplay = false;
+  let isSectionVisible = false;
+  let isDocumentVisible = !document.hidden;
+  let currentProjectIndex = 0;
+  const totalProjects = projects.length;
+  const AUTO_SCROLL_INTERVAL = 5000;
+  const CAROUSEL_TRANSITION = 'transform 720ms cubic-bezier(0.22, 1, 0.36, 1)';
+  let activeLoopIndex = 1;
+  let slideWidth = getSlideWidth();
+  let isTransitioning = false;
+
+  function clearAutoScrollTimeout() {
+    if (autoScrollTimeout) {
+      clearTimeout(autoScrollTimeout);
+      autoScrollTimeout = null;
     }
+  }
+
+  function scheduleNextAutoStep() {
+    const shouldRun = isPlaying && !userStoppedAutoplay && isSectionVisible && isDocumentVisible;
+    if (!shouldRun) return;
+
+    clearAutoScrollTimeout();
+    autoScrollTimeout = setTimeout(() => {
+      autoScrollTimeout = null;
+      if (!isTransitioning) {
+        goToLoopIndex(activeLoopIndex + 1);
+      }
+    }, AUTO_SCROLL_INTERVAL);
+  }
+
+  function updateAutoplayState() {
+    const shouldRun = isPlaying && !userStoppedAutoplay && isSectionVisible && isDocumentVisible;
+
+    if (!shouldRun) {
+      clearAutoScrollTimeout();
+      return;
+    }
+
+    if (!isTransitioning && !autoScrollTimeout) {
+      scheduleNextAutoStep();
+    }
+  }
+
+  function goToLoopIndex(loopIndex, immediate = false) {
+    activeLoopIndex = loopIndex;
+    syncState();
+    if (immediate) {
+      setTrackPosition(false);
+      return;
+    }
+    isTransitioning = true;
+    setTrackPosition(true);
   }
 
   function scrollLeft() {
-    let newIndex = currentProjectIndex - 1;
-    if (newIndex < 0) {
-      newIndex = totalProjects - 1;
-    }
-    scrollToProject(newIndex);
+    if (isTransitioning) return;
+    goToLoopIndex(activeLoopIndex - 1);
   }
 
   function scrollRight() {
-    let newIndex = currentProjectIndex + 1;
-    scrollToProject(newIndex);
+    if (isTransitioning) return;
+    goToLoopIndex(activeLoopIndex + 1);
   }
 
-  // Auto-scroll to next item every 3 seconds
-  function autoScroll() {
-    if (!isPlaying) return;
-    scrollRight();
-  }
+  track.addEventListener('transitionend', (event) => {
+    if (event.target !== track || event.propertyName !== 'transform') return;
 
-  // Start auto-scroll on load
-  autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL);
-  updateActiveDot();
+    isTransitioning = false;
 
-  // Pause/Resume on manual interaction
+    if (activeLoopIndex === 0) {
+      activeLoopIndex = totalProjects;
+      setTrackPosition(false);
+      track.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        track.style.transition = CAROUSEL_TRANSITION;
+      });
+    } else if (activeLoopIndex === totalProjects + 1) {
+      activeLoopIndex = 1;
+      setTrackPosition(false);
+      track.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        track.style.transition = CAROUSEL_TRANSITION;
+      });
+    }
+
+    syncState();
+    scheduleNextAutoStep();
+  });
+
+  setTrackPosition(false);
+  syncState();
+
   function pauseAutoScroll() {
-    clearInterval(autoScrollInterval);
     isPlaying = false;
+    clearAutoScrollTimeout();
     if (playPauseBtn) {
       playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
     }
+    updateAutoplayState();
   }
 
   function resumeAutoScroll() {
-    if (!isPlaying) {
+    if (!userStoppedAutoplay) {
       isPlaying = true;
       if (playPauseBtn) {
         playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
       }
-      autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL);
+      updateAutoplayState();
     }
   }
 
-  // Play/Pause button toggle
+  function stopAutoplayFromInteraction() {
+    userStoppedAutoplay = true;
+    pauseAutoScroll();
+  }
+
   if (playPauseBtn) {
     playPauseBtn.addEventListener('click', () => {
       if (isPlaying) {
+        userStoppedAutoplay = true;
         pauseAutoScroll();
       } else {
+        userStoppedAutoplay = false;
         resumeAutoScroll();
       }
     });
   }
 
-  // Dot navigation
   navDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-      pauseAutoScroll();
-      scrollToProject(index);
-      setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
+      stopAutoplayFromInteraction();
+      goToLoopIndex(index + 1);
     });
   });
 
   leftBtn.addEventListener('click', () => {
-    pauseAutoScroll();
+    stopAutoplayFromInteraction();
     scrollLeft();
-    setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
   });
 
   rightBtn.addEventListener('click', () => {
-    pauseAutoScroll();
+    stopAutoplayFromInteraction();
     scrollRight();
-    setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
   });
 
-  // Update button visibility - buttons always enabled with looping
+  detailsToggleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      const detailsContainer = targetId ? document.getElementById(targetId) : null;
+      if (!detailsContainer) return;
+
+      const isExpanded = detailsContainer.classList.toggle('expanded');
+      button.setAttribute('aria-expanded', String(isExpanded));
+      button.innerHTML = isExpanded
+        ? '<i class="fas fa-minus-circle"></i><span>Hide Details</span>'
+        : '<i class="fas fa-plus-circle"></i><span>View Details</span>';
+    });
+  });
+
   function updateButtonVisibility() {
-    // Buttons always stay enabled since we have looping functionality
     leftBtn.style.opacity = '1';
     leftBtn.style.pointerEvents = 'auto';
     leftBtn.style.cursor = 'pointer';
@@ -434,30 +573,23 @@ function createProjectCarousel() {
     rightBtn.style.cursor = 'pointer';
   }
 
-  // Listen to scroll events
-  track.addEventListener('scroll', updateButtonVisibility);
   window.addEventListener('resize', () => {
     updateButtonVisibility();
-    scrollAmount = getScrollAmount(); // Recalculate on resize
+    refreshLayout();
   });
 
-  // Initialize button states after content loads
   setTimeout(updateButtonVisibility, 200);
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
-      pauseAutoScroll();
+      stopAutoplayFromInteraction();
       scrollLeft();
-      setTimeout(resumeAutoScroll, 2000);
     } else if (e.key === 'ArrowRight') {
-      pauseAutoScroll();
+      stopAutoplayFromInteraction();
       scrollRight();
-      setTimeout(resumeAutoScroll, 2000);
     }
   });
 
-  // Touch swipe support
   let touchStartX = 0;
   track.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
@@ -467,16 +599,41 @@ function createProjectCarousel() {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) {
-      pauseAutoScroll();
+      stopAutoplayFromInteraction();
       if (diff > 0) scrollRight();
       else scrollLeft();
-      setTimeout(resumeAutoScroll, 2000);
     }
   }, { passive: true });
 
-  // Pause on mouse hover
-  track.addEventListener('mouseenter', pauseAutoScroll);
-  track.addEventListener('mouseleave', resumeAutoScroll);
+  track.addEventListener('mouseenter', () => {
+    isPlaying = false;
+    updateAutoplayState();
+  });
+
+  track.addEventListener('mouseleave', () => {
+    if (!userStoppedAutoplay) {
+      isPlaying = true;
+      updateAutoplayState();
+    }
+  });
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      isSectionVisible = entry.isIntersecting;
+      updateAutoplayState();
+    });
+  }, { threshold: 0.45 });
+
+  if (section) {
+    sectionObserver.observe(section);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    isDocumentVisible = !document.hidden;
+    updateAutoplayState();
+  });
+
+  updateAutoplayState();
 }
 
 
@@ -660,27 +817,6 @@ window.addEventListener('load', () => {
 });
 
 // =====================
-// PROGRESS INDICATOR
-// =====================
-const progressIndicator = document.getElementById('progressIndicator');
-const progressFill = document.getElementById('progressFill');
-const progressText = progressIndicator?.querySelector('.progress-text');
-
-window.addEventListener('scroll', () => {
-  if (!progressIndicator) return;
-  
-  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrolled = (window.scrollY / scrollHeight) * 100;
-  
-  if (progressFill) {
-    progressFill.style.strokeDashoffset = `calc(282.7 - (282.7 * ${scrolled / 100}))`;
-  }
-  if (progressText) {
-    progressText.textContent = `${Math.round(scrolled)}%`;
-  }
-});
-
-// =====================
 // FLOATING CTA BUTTON
 // =====================
 const floatingCTA = document.getElementById('floatingCTA');
@@ -689,21 +825,6 @@ if (floatingCTA) {
     const footer = document.querySelector('footer');
     if (footer) {
       footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-}
-
-// =====================
-// NEWSLETTER FORM
-// =====================
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = newsletterForm.querySelector('.newsletter-input');
-    if (input && input.value) {
-      alert(`Thanks for subscribing with ${input.value}! 🎉`);
-      input.value = '';
     }
   });
 }
