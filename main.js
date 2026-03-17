@@ -218,6 +218,17 @@ function createProjectCarousel() {
       image: 'images/project-nexus.PNG',
     },
     {
+      title: 'SentinelIQ - Fintech Security Monitoring Platform',
+      badge: 'Enterprise',
+      difficulty: 'Expert',
+      tagline: 'Real-Time Risk Detection & Fraud Prevention for Financial Institutions',
+      problem: 'Financial institutions face sophisticated fraud, regulatory, and security threats that require real-time detection, multi-dimensional risk analysis, and unified intelligence. Traditional systems are slow, fragmented, and create alert fatigue.',
+      solution: 'Built a microservices-first backend with FastAPI, PostgreSQL, Redis, and MinIO. Features include event-driven risk scoring, YAML-configurable rules, immutable audit logging, JWT/RBAC auth, and real-time monitoring with Prometheus, Loki, and Grafana. Multi-tenant SaaS ready.',
+      tech: ['FastAPI', 'PostgreSQL', 'Redis', 'MinIO', 'Vault', 'Docker', 'Prometheus', 'Grafana', 'React'],
+      outcome: 'Unified platform for real-time fraud prevention, compliance, and security analytics. Enables financial institutions to detect threats instantly, reduce false positives, and meet audit requirements.',
+      image: 'images/sentineliq.png',
+    },
+    {
       title: 'Azure Security Engineer Labs',
       badge: 'Security',
       difficulty: 'Advanced',
