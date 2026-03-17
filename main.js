@@ -849,6 +849,8 @@ if (document.readyState === 'loading') {
 // =====================
 // CONSOLE MESSAGE
 // =====================
-console.log('%c🚀 Portfolio Website Loaded Successfully!', 'color: #667eea; font-size: 16px; font-weight: bold;');
-console.log('%c👨‍💻 Designed and Developed by Vincent Collins', 'color: #764ba2; font-size: 14px;');
-console.log('%c💼 Looking for opportunities? Let\'s connect!', 'color: #5bc0de; font-size: 14px;');
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  console.log('%c🚀 Portfolio Website Loaded Successfully!', 'color: #667eea; font-size: 16px; font-weight: bold;');
+  console.log('%c👨‍💻 Designed and Developed by Vincent Collins', 'color: #764ba2; font-size: 14px;');
+  console.log('%c💼 Looking for opportunities? Let\'s connect!', 'color: #5bc0de; font-size: 14px;');
+}

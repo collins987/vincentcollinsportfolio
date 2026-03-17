@@ -386,13 +386,39 @@ section {
   border-bottom: 1px solid #e2e8f0;
 }
 
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  align-items: stretch;
+}
+@media (max-width: 991px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 575px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 .stat-item {
   padding: 2rem 1rem;
   transition: var(--transition);
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  text-align: center;
 }
 
 .stat-item:hover {
   transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
 }
 
 .stat-icon {
@@ -2464,6 +2490,27 @@ body.dark-mode .stats-section {
   border-bottom-color: #334155;
 }
 
+body.dark-mode .stats-grid {
+  background: none;
+}
+body.dark-mode .stat-item {
+  background: #1e293b;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+}
+body.dark-mode .stat-icon {
+  color: #8faaff;
+  opacity: 1;
+}
+body.dark-mode .stat-number {
+  color: #e2e8f0;
+  opacity: 1;
+}
+body.dark-mode .stat-label {
+  color: #b6c6e3;
+  opacity: 1;
+}
+}
+
 body.dark-mode .projects-section,
 body.dark-mode .contact-section,
 body.dark-mode .services-section {
@@ -2522,13 +2569,7 @@ body.dark-mode .timeline-icon {
   border-color: #1e293b;
 }
 
-body.dark-mode .hero-title,
-body.dark-mode .typing-text,
-body.dark-mode .hero-subtitle,
-body.dark-mode .hero-title .highlight {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
+
 
 /* ===================================
    RESPONSIVE - TABLET (max-width: 992px)
